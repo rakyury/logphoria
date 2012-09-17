@@ -1,0 +1,23 @@
+{
+  "author": "Rak Yury <rak.yruy@gmail.com>",
+  "name": "leftronic",
+  "description": "Logphoria push API",
+  "version": "0.1.0",
+  "homepage": "http://www.logphoria.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rakyury/logphoria.git"
+  },
+  "keywords": [
+    "log",
+    "analytics",
+    "real-time",
+    "socket"
+  ],
+  "engine": {
+    "node": ">=0.2"
+  },
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {}
+}

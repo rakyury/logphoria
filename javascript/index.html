@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Logphoria Javascript Logging Example</title> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  
+  <script type="text/JavaScript">
+    var scr = document.createElement("script"); 
+    scr.type = "text/javascript";
+    scr.src = "logphoria.js";
+    document.documentElement.firstChild.appendChild(scr);
+  </script>
+  
+   <script type="text/javascript">
+    window.onload = function(){ 
+      var key = "eddfab7a-a992-0311-80f8-bbc22b69a8a1";
+      var host = "http://176.34.114.130";
+      castor = new logphoria.castor({ url: host+'/log/'+key, level: 'log'});
+    }
+  
+    window.onerror = function (err, file, line) {
+      castor.error({message: err, file: file, line: line, environment: getEnvParams()});
+      return true;
+    }
+  
+    function getEnvParams() {
+      var params = {};
+      params.appCodeName = navigator.appCodeName;
+      params.appVersion = navigator.appVersion;
+      params.language = navigator.language;
+      params.platform = navigator.platform;
+      params.cookieEnabled = navigator.cookieEnabled;
+      return params;
+    }
+  
+    function throwError() {
+      throw new Error("This is test error");
+    }
+  
+    function sendLog() {
+      castor.log({message: "this is message from client side", url:window.location.href, environment: getEnvParams() });
+    } 
+  </script>
+
+</head>
+<body>
+  <div>
+  <p>
+    <input type="button" onclick="throwError()"value="Throw exception"/>
+  </p>
+  <p>
+    <input type="button" onclick="sendLog()"value="Send log"/>
+  </p>
+  
+    <p>В© 2012 <a href="http://logphoria.com/">В© 2012 Arzoola Inc.</a></p>
+  </div>
+</body>
+</html>
